@@ -1,0 +1,21 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@model CourseModel
+<div class="container">
+    <div class="row d-flex justify-content-center">
+        <div class="col-5">
+            <form asp-controller="Course" asp-action="RemoveCourse" method="post" class="p-2 bg-light shadow">
+                <input type="number" asp-for="CourseId" hidden />
+                <div class="mb-3">
+                    <label class="form-label">First Name</label>
+                    <input asp-for="CourseName" type="text" class="form-control" readonly>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

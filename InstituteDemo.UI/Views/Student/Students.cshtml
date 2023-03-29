@@ -1,0 +1,68 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+
+@model IEnumerable<StudentModel>
+
+<div class="container-fluid">
+    <div class="row mt-4 d-flex justify-content-end">
+        <div class="col-2">
+            <button class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#studentModal">Add New Student</button>
+        </div>
+    </div>
+    <div class="row mt-2">
+        @if (Model.ToList().Count > 0)
+        {
+            @foreach (var student in Model)
+            {
+                <div class="card col-3 m-1 shadow bg-light">
+                    <div class="w-100 d-flex justify-content-end">
+                        <a asp-route-id="@student.Id" asp-controller="Student" asp-action="RemoveStudent" class="btn-close mt-1"></a>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Name: @(student.FirstName+" "+student.MiddleName+" "+student.LastName)</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Age:@student.Age</h6>
+                        <p class="card-text">Address: @student.Address.</p>
+                        <h6 class="card-subtitle mb-2 text-muted">Registered Courses</h6>
+                        @if (student.Courses.Count > 0)
+                        {
+                            @foreach (var course in student.Courses)
+                            {
+                                <ul class="list-group">
+                                    <li class="list-group-item list-group-item-success text-center">@course.CourseName</li>
+                                </ul>
+                            }
+                        }
+                        else
+                        {
+                            <span class="text-center text-black">there are no courses to display.</span>
+                        }
+                    </div>
+                    <div class="w-100 d-flex justify-content-end">
+                        <a class="btn btn-warning w-25 my-1" asp-route-id="@student.Id" asp-controller="Student" asp-action="EditStudent">Edit</a>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <p class="lead">there are no students to display.</p>
+        }
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="studentModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="studentModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="studentModalLabel">Add New Student</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <partial name="CreateStudent" model="new StudentModel()" />
+            </div>
+        </div>
+    </div>
+</div>

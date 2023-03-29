@@ -1,0 +1,38 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@model StudentModel
+
+<div class="container">
+    <div class="row d-flex justify-content-center">
+        <div class="col-5">
+            <form asp-controller="Student" asp-action="EditStudent" method="post" class="p-2 bg-light shadow">
+                <input type="number" asp-for="Id" hidden />
+                <div class="mb-3">
+                    <label class="form-label">First Name</label>
+                    <input asp-for="FirstName" type="text" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Middle Name</label>
+                    <input asp-for="MiddleName" type="text" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Last Name</label>
+                    <input asp-for="LastName" type="text" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Age</label>
+                    <input asp-for="Age" type="number" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Address</label>
+                    <input asp-for="Address" type="text" class="form-control">
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

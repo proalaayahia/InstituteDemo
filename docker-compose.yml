@@ -1,0 +1,23 @@
+version: '3.4'
+
+services:
+  institutedemo.api:
+    image: ${DOCKER_REGISTRY-}institutedemoapi
+    build:
+      context: .
+      dockerfile: InstituteDemo.Api/Dockerfile
+
+  institutedemo.ui:
+    image: ${DOCKER_REGISTRY-}institutedemoui
+    build:
+      context: .
+      dockerfile: InstituteDemo.UI/Dockerfile
+    ports:
+      - "5000:80"
+  sqldb:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+    - SA_PASSWORD=3Alaa_Ya7!a
+    - ACCEPT_EULA=Y
+    ports:
+    - "1440:1433"

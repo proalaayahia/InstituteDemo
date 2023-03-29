@@ -1,0 +1,30 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model StudentModel
+<form asp-controller="Student" asp-action="CreateStudent">
+    <div class="mb-3">
+        <label class="form-label">First Name</label>
+        <input asp-for="FirstName" type="text" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Middle Name</label>
+        <input asp-for="MiddleName" type="text" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Last Name</label>
+        <input asp-for="LastName" type="text" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Age</label>
+        <input asp-for="Age" type="number" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Address</label>
+        <input asp-for="Address" type="text" class="form-control">
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>
